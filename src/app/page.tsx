@@ -1,5 +1,3 @@
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import { Sidebar } from '@/components/Sidebar';
 import { ProductList } from '@/components/ProductList';
 import { AdBanner } from '@/components/AdBanner';
@@ -7,10 +5,7 @@ import { AdBanner } from '@/components/AdBanner';
 export default function HomePage() {
   return (
     <div className="bg-background text-foreground min-h-screen flex flex-col">
-      {/* Header */}
-      <Header />
-
-      <main className="container mx-auto flex flex-col md:flex-row gap-6 py-6">
+      <div className="container mx-auto flex flex-col md:flex-row gap-6 py-6">
         {/* Sidebar */}
         <Sidebar />
 
@@ -28,10 +23,7 @@ export default function HomePage() {
           {/* Mais Conteúdo */}
           <ProductList type="recommended" />
         </div>
-      </main>
-
-      {/* Footer */}
-      <Footer />
+      </div>
     </div>
   );
 }

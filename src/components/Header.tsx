@@ -1,10 +1,26 @@
 'use client';
 import { useState } from 'react';
 import { ThemeSwitcher } from './ThemeSwitcher';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
+import { CategoriesPopover } from './CategoriesPopover';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    // Implementar lógica de busca aqui
+    console.log('Searching for:', searchQuery);
+  }
+
+  function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery(e.target.value);
+  }
+
+  function handleMenuToggle() {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   return (
     <header className="bg-background-secondary border-b border-border p-4">
@@ -24,14 +40,21 @@ export function Header() {
             href="#"
             className="text-muted hover:text-primary"
           >
-            Reviews
+            Tech
           </a>
           <a
             href="#"
             className="text-muted hover:text-primary"
           >
-            Categorias
+            Beauty
           </a>
+          <a
+            href="#"
+            className="text-muted hover:text-primary"
+          >
+            Deals
+          </a>
+          <CategoriesPopover />
         </nav>
 
         {/* Botão de Alternância de Tema */}
@@ -40,8 +63,9 @@ export function Header() {
 
           {/* Botão Menu Mobile */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={handleMenuToggle}
             className="md:hidden p-2 rounded-md border border-border bg-background-secondary"
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
@@ -49,6 +73,27 @@ export function Header() {
               <Menu className="w-6 h-6" />
             )}
           </button>
+
+          <form
+            onSubmit={handleSearch}
+            className="hidden sm:flex items-center relative"
+          >
+            <input
+              type="search"
+              placeholder="Buscar..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="px-4 py-2 pr-10 rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              aria-label="Campo de busca"
+            />
+            <button
+              type="submit"
+              className="absolute right-3 text-muted hover:text-primary"
+              aria-label="Buscar"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
         </div>
       </div>
 

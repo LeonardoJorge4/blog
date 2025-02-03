@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import { ThemeProvider } from '@/providers/theme-provider';
 import './globals.css';
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -13,7 +16,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+
+          <main>{children}</main>
+
+          <Footer />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
