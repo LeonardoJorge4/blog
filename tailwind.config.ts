@@ -10,6 +10,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         'background-secondary': 'var(--background-secondary)',
@@ -54,9 +58,6 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
         h1: [

@@ -13,10 +13,11 @@ export function ThemeSwitcher() {
   return (
     <button
       onClick={handleToggleTheme}
-      className="p-2 text-sm font-medium border rounded-md bg-primary text-white flex items-center justify-center"
+      className="relative p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors"
+      aria-label="Alternar tema"
     >
-      <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-5 w-5 text-primary rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-5 w-5 text-primary top-2 left-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Alternar tema</span>
     </button>
   );
