@@ -4,13 +4,12 @@ import Link from 'next/link';
 import { Search, Heart, Menu } from 'lucide-react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { useState } from 'react';
+import { CategoriesMenu } from './CategoriesMenu';
 
 const navigation = [
-  { name: 'Tecnologia', href: '/tecnologia' },
-  { name: 'Beleza', href: '/beleza' },
-  { name: 'Moda', href: '/moda' },
-  { name: 'Casa', href: '/casa' },
-  { name: 'Fitness', href: '/fitness' },
+  { name: 'Destaques', href: '/destaques' },
+  { name: 'Ofertas', href: '/ofertas' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 export function Header() {
@@ -25,7 +24,10 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link
+            href="/"
+            className="flex items-center space-x-2"
+          >
             <span className="text-2xl font-bold text-primary">BestFinder</span>
           </Link>
 
@@ -43,6 +45,7 @@ export function Header() {
 
           {/* Navegação - Desktop */}
           <nav className="hidden lg:flex items-center space-x-8">
+            <CategoriesMenu />
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -63,7 +66,7 @@ export function Header() {
             >
               <Heart className="h-5 w-5" />
             </Link>
-            
+
             <ThemeSwitcher />
 
             <Link
@@ -100,6 +103,9 @@ export function Header() {
         {isMenuOpen && (
           <nav className="lg:hidden py-4 border-t">
             <div className="flex flex-col space-y-4">
+              <div className="px-3 py-2 text-sm font-medium text-foreground">
+                <CategoriesMenu />
+              </div>
               {navigation.map((item) => (
                 <Link
                   key={item.name}
