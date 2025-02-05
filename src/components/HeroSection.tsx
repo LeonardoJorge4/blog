@@ -71,13 +71,14 @@ export function HeroSection() {
                   style={{ backgroundImage: `url(${slide.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
-                <div className="container relative mx-auto px-4 h-full">
-                  <div className="flex flex-col justify-center h-full max-w-2xl">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                <div className="container relative mx-auto px-4 h-full flex items-center">
+                  <div className="max-w-2xl pl-16">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                       {slide.title}
                     </h1>
-                    <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                    <p className="text-lg md:text-xl text-white/80 mb-8">
                       {slide.description}
                     </p>
                     <Link
@@ -93,7 +94,7 @@ export function HeroSection() {
           ))}
         </CarouselContent>
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -108,8 +109,8 @@ export function HeroSection() {
           ))}
         </div>
 
-        <CarouselPrevious className="left-4" />
-        <CarouselNext className="right-4" />
+        <CarouselPrevious className="left-4 z-20" />
+        <CarouselNext className="right-4 z-20" />
       </Carousel>
 
       {/* Banner de anúncio */}
@@ -120,4 +121,4 @@ export function HeroSection() {
       </div>
     </section>
   );
-} 
+}

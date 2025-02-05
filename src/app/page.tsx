@@ -1,9 +1,8 @@
 import { HeroSection } from '@/components/HeroSection';
-import { TopPicks } from '@/components/TopPicks';
-import { PopularProducts } from '@/components/PopularProducts';
 import { PostCard } from '@/components/PostCard';
+import { AdBanner } from '@/components/AdBanner';
 
-// Dados mockados para exemplo
+// Mock data - Replace with actual data
 const featuredPosts = [
   {
     slug: 'melhores-smartphones-2024',
@@ -11,176 +10,143 @@ const featuredPosts = [
     excerpt:
       'Confira nossa seleção dos melhores smartphones do ano, com análises detalhadas e comparativos de preço.',
     coverImage: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9',
-    category: 'Tecnologia',
+    category: 'Tech',
     readTime: 8,
     views: 1234,
     comments: 23,
   },
-  {
-    slug: 'setup-home-office',
-    title: 'Como Montar um Home Office Produtivo',
-    excerpt:
-      'Dicas essenciais para criar um espaço de trabalho confortável e eficiente em casa.',
-    coverImage: 'https://images.unsplash.com/photo-1593642532744-d377ab507dc8',
-    category: 'Produtividade',
-    readTime: 10,
-    views: 982,
-    comments: 15,
-  },
-  {
-    slug: 'fotografia-smartphone',
-    title: 'Fotografia Profissional com Smartphone',
-    excerpt:
-      'Aprenda técnicas avançadas para tirar fotos incríveis usando apenas seu celular.',
-    coverImage: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32',
-    category: 'Fotografia',
-    readTime: 15,
-    views: 2156,
-    comments: 42,
-  },
+  // ... outros posts
 ];
 
-const popularPosts = [
+const techPosts = [
   {
     slug: 'guia-fones-bluetooth',
     title: 'Guia Definitivo: Como Escolher Fones Bluetooth',
     excerpt:
       'Aprenda tudo sobre fones bluetooth e descubra qual o melhor modelo para suas necessidades.',
     coverImage: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e',
-    category: 'Áudio',
+    category: 'Tech',
     readTime: 12,
     views: 3456,
     comments: 45,
   },
+  // ... outros posts
+];
+
+const lifestylePosts = [
   {
-    slug: 'tendencias-moda-2024',
-    title: 'Tendências de Moda para 2024',
+    slug: 'setup-home-office',
+    title: 'Como Montar um Home Office Produtivo',
     excerpt:
-      'As principais tendências que vão dominar o mundo da moda neste ano.',
-    coverImage: 'https://images.unsplash.com/photo-1445205170230-053b83016050',
-    category: 'Moda',
-    readTime: 8,
-    views: 2789,
-    comments: 31,
-  },
-  {
-    slug: 'gadgets-viagem',
-    title: 'Gadgets Essenciais para Viagem',
-    excerpt:
-      'Os melhores dispositivos para tornar sua viagem mais confortável e conectada.',
-    coverImage: 'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931',
-    category: 'Viagem',
+      'Dicas essenciais para criar um espaço de trabalho confortável e eficiente em casa.',
+    coverImage: 'https://images.unsplash.com/photo-1593642532744-d377ab507dc8',
+    category: 'Lifestyle',
     readTime: 10,
-    views: 1987,
-    comments: 27,
+    views: 982,
+    comments: 15,
   },
+  // ... outros posts
 ];
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* Banner Principal (970x90 ou 728x90) */}
-      <div className="w-full bg-background">
-        <div className="container mx-auto px-4 py-4">
-          <div className="w-full h-[90px] bg-muted rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground">
-              Anúncio Principal (970x90)
-            </span>
-          </div>
+      {/* Top Banner Ad - Full Width */}
+      <div className="w-full bg-muted/30 py-4">
+        <div className="container mx-auto px-4">
+          <AdBanner position="top" />
         </div>
       </div>
 
-      {/* Hero Section */}
-      <HeroSection />
+      <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <section className="py-8">
+          <HeroSection />
+        </section>
 
-      {/* Posts em Destaque */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-3xl font-bold">Posts em Destaque</h2>
-            <p className="text-muted-foreground mt-1">
-              Conteúdo selecionado especialmente para você
-            </p>
-          </div>
-        </div>
-
-        {/* Grid com Anúncio In-Feed */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredPosts.slice(0, 3).map((post) => (
-            <PostCard
-              key={post.slug}
-              {...post}
-            />
-          ))}
-          {/* Anúncio In-Feed (300x250) */}
-          <div className="h-[250px] bg-muted rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground">Anúncio In-Feed</span>
-          </div>
-          {featuredPosts.slice(3, 6).map((post) => (
-            <PostCard
-              key={post.slug}
-              {...post}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Produtos Recomendados com Sidebar Ad */}
-      <section className="bg-muted/50 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Conteúdo Principal */}
-            <div className="lg:col-span-9">
-              <TopPicks />
+        {/* Featured Posts */}
+        <section className="py-12 border-t">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-bold">Featured Posts</h2>
+              <p className="text-muted-foreground mt-1">
+                Our most comprehensive reviews and guides
+              </p>
             </div>
-            {/* Sidebar Ad Sticky */}
-            <div className="hidden lg:block lg:col-span-3">
-              <div className="sticky top-[140px]">
-                <div className="space-y-6">
-                  <div className="h-[600px] bg-muted rounded-lg flex items-center justify-center">
-                    <span className="text-muted-foreground">
-                      Anúncio (160x600)
-                    </span>
-                  </div>
-                  <div className="h-[250px] bg-muted rounded-lg flex items-center justify-center">
-                    <span className="text-muted-foreground">
-                      Anúncio (300x250)
-                    </span>
-                  </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredPosts.map((post) => (
+              <PostCard
+                key={post.slug}
+                {...post}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Mid-Page Banner Ad - Full Width Background */}
+        <div className="relative -mx-4 bg-muted/30 py-4">
+          <div className="container mx-auto">
+            <AdBanner position="middle" />
+          </div>
+        </div>
+
+        {/* Tech Reviews Section with Sidebar */}
+        <section className="py-12 border-t">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-9">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="text-3xl font-bold">Tech Reviews</h2>
+                  <p className="text-muted-foreground mt-1">
+                    Latest in technology and gadgets
+                  </p>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {techPosts.map((post) => (
+                  <PostCard
+                    key={post.slug}
+                    {...post}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Sidebar Ad */}
+            <div className="hidden lg:block lg:col-span-3">
+              <div className="sticky top-[140px] space-y-6">
+                <AdBanner
+                  className="h-[600px]"
+                  position="sidebar-top"
+                />
+                <AdBanner
+                  className="h-[250px]"
+                  position="sidebar-bottom"
+                />
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Posts Populares com Anúncios */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Conteúdo Principal */}
-          <div className="lg:col-span-9">
+        {/* Lifestyle & Productivity Section */}
+        <div className="relative py-12 border-t">
+          <div className="absolute inset-0 bg-muted/30" />
+          <div className="relative">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-3xl font-bold">Posts Populares</h2>
+                <h2 className="text-3xl font-bold">Lifestyle & Productivity</h2>
                 <p className="text-muted-foreground mt-1">
-                  Os conteúdos mais acessados da semana
+                  Tips and recommendations for a better life
                 </p>
               </div>
             </div>
 
-            {/* Grid com Anúncios Intercalados */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {popularPosts.slice(0, 2).map((post) => (
-                <PostCard
-                  key={post.slug}
-                  {...post}
-                />
-              ))}
-              {/* Anúncio In-Feed (300x250) */}
-              <div className="md:col-span-2 h-[250px] bg-muted rounded-lg flex items-center justify-center">
-                <span className="text-muted-foreground">Anúncio In-Feed</span>
-              </div>
-              {popularPosts.slice(2).map((post) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {lifestylePosts.map((post) => (
                 <PostCard
                   key={post.slug}
                   {...post}
@@ -188,38 +154,13 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Sidebar Ad Sticky */}
-          <div className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-[140px]">
-              <div className="space-y-6">
-                <div className="h-[600px] bg-muted rounded-lg flex items-center justify-center">
-                  <span className="text-muted-foreground">
-                    Anúncio (160x600)
-                  </span>
-                </div>
-                <div className="h-[250px] bg-muted rounded-lg flex items-center justify-center">
-                  <span className="text-muted-foreground">
-                    Anúncio (300x250)
-                  </span>
-                </div>
-              </div>
-            </div>
+        {/* Bottom Banner Ad - Full Width Background */}
+        <div className="relative -mx-4 bg-muted/30 py-4 mt-12">
+          <div className="container mx-auto">
+            <AdBanner position="bottom" />
           </div>
-        </div>
-      </section>
-
-      {/* Produtos Populares */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <PopularProducts />
-        </div>
-      </section>
-
-      {/* Banner de Anúncio Final (Antes do Footer) */}
-      <div className="container mx-auto px-4 pb-12">
-        <div className="w-full h-[250px] bg-muted rounded-lg flex items-center justify-center">
-          <span className="text-muted-foreground">Anúncio Final (970x250)</span>
         </div>
       </div>
     </div>
