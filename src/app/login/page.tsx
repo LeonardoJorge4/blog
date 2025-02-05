@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Apple, ArrowLeft, Eye, EyeOff, Github } from 'lucide-react';
+import { Apple, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -34,10 +34,6 @@ export default function LoginPage() {
 
   function handleAppleLogin() {
     // Implementar login com Apple
-  }
-
-  function handleGithubLogin() {
-    // Implementar login com Github
   }
 
   return (
@@ -118,7 +114,7 @@ export default function LoginPage() {
                   </Label>
                 </div>
                 <Link
-                  href="/recuperar-senha"
+                  href="/forgot-password"
                   className="text-sm font-medium text-primary hover:text-primary/90"
                 >
                   Esqueceu a senha?
@@ -178,22 +174,13 @@ export default function LoginPage() {
                 <Apple className="mr-2 h-4 w-4" />
                 Apple
               </Button>
-
-              <Button
-                variant="outline"
-                onClick={handleGithubLogin}
-                className="w-full"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                Github
-              </Button>
             </div>
           </CardContent>
           <CardFooter>
             <p className="text-center text-sm text-muted-foreground w-full">
               Não tem uma conta?{' '}
               <Link
-                href="/cadastro"
+                href="/register"
                 className="font-medium text-primary hover:text-primary/90"
               >
                 Cadastre-se

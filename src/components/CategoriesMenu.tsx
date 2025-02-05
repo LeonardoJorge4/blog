@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -41,7 +40,10 @@ const categories = [
         title: 'Acessórios',
         items: [
           { title: 'Fones', href: '/tecnologia/acessorios/fones' },
-          { title: 'Smartwatches', href: '/tecnologia/acessorios/smartwatches' },
+          {
+            title: 'Smartwatches',
+            href: '/tecnologia/acessorios/smartwatches',
+          },
           { title: 'Teclados', href: '/tecnologia/acessorios/teclados' },
           { title: 'Mouses', href: '/tecnologia/acessorios/mouses' },
         ],
@@ -171,7 +173,6 @@ const categories = [
       // ... subcategorias
     ],
   },
-  // ... mais categorias não featured
 ];
 
 export function CategoriesMenu() {
@@ -179,9 +180,9 @@ export function CategoriesMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid grid-cols-[200px_1fr] w-[850px] gap-0 p-4">
+            <div className="grid grid-cols-[200px_1fr] w-[450px] gap-0 p-4">
               {/* Lista de Categorias */}
               <ul className="space-y-2">
                 {categories.map((category) => (
@@ -190,15 +191,19 @@ export function CategoriesMenu() {
                     title={category.title}
                     href={category.href}
                     className={cn(
-                      "hover:bg-muted rounded-lg transition-colors",
-                      !category.featured && "text-muted-foreground"
+                      'hover:bg-muted rounded-lg transition-colors',
+                      !category.featured && 'text-muted-foreground'
                     )}
                     onMouseEnter={() => {
-                      const content = document.getElementById(`subcategories-${category.href}`);
+                      const content = document.getElementById(
+                        `subcategories-${category.href}`
+                      );
                       if (content) {
-                        document.querySelectorAll('[data-subcategories]').forEach((el) => {
-                          el.classList.add('hidden');
-                        });
+                        document
+                          .querySelectorAll('[data-subcategories]')
+                          .forEach((el) => {
+                            el.classList.add('hidden');
+                          });
                         content.classList.remove('hidden');
                       }
                     }}
@@ -271,4 +276,4 @@ const ListItem = React.forwardRef<
     </li>
   );
 });
-ListItem.displayName = 'ListItem'; 
+ListItem.displayName = 'ListItem';

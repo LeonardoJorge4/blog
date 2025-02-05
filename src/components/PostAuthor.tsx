@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
 
 interface PostAuthorProps {
@@ -22,14 +21,12 @@ export function PostAuthor({ author, date, readTime }: PostAuthorProps) {
         className="rounded-full"
       />
       <div className="text-sm">
-        <Link 
-          href={`/autor/${author.name.toLowerCase().replace(' ', '-')}`}
-          className="font-medium hover:text-primary"
-        >
-          {author.name}
-        </Link>
-        <span className="text-muted-foreground"> • {formatDate(date)} • {readTime} min de leitura</span>
+        <span className="font-medium">{author.name}</span>
+        <span className="text-muted-foreground">
+          {' '}
+          • {formatDate(date)} • {readTime} min de leitura
+        </span>
       </div>
     </div>
   );
-} 
+}

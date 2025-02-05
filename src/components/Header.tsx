@@ -7,9 +7,9 @@ import { useState } from 'react';
 import { CategoriesMenu } from './CategoriesMenu';
 
 const navigation = [
-  { name: 'Destaques', href: '/destaques' },
-  { name: 'Ofertas', href: '/ofertas' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Tech', href: '/tech' },
+  { name: 'Beauty', href: '/beauty' },
+  { name: 'House', href: '/house' },
 ];
 
 export function Header() {
@@ -44,25 +44,28 @@ export function Header() {
           </div>
 
           {/* Navegação - Desktop */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
+            <div className="flex items-center space-x-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
             <CategoriesMenu />
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
           </nav>
 
           {/* Ações */}
           <div className="flex items-center space-x-4">
             <Link
-              href="/favoritos"
+              href="/favorites"
               className="p-2 rounded-full hover:bg-muted transition-colors"
-              aria-label="Favoritos"
+              aria-label="Favorites"
             >
               <Heart className="h-5 w-5" />
             </Link>
