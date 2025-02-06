@@ -3,14 +3,15 @@ import Image from 'next/image';
 import { Table } from '@/components/ui/table';
 
 interface PostSection {
-  type: 'paragraph' | 'heading' | 'image' | 'table' | 'list';
-  content: string;
+  type: 'paragraph' | 'heading' | 'image' | 'table' | 'list' | 'ad';
+  content?: string;
   level?: 1 | 2 | 3; // Para headings
   src?: string; // Para imagens
   alt?: string; // Para imagens
   caption?: string; // Para imagens
   data?: any[]; // Para tabelas
   items?: string[]; // Para listas
+  format?: 'in-article';
 }
 
 interface PostContentProps {
@@ -60,13 +61,13 @@ export function PostContent({ content }: PostContentProps) {
         return (
           <div className="my-8 overflow-x-auto">
             <Table>
-              <thead>
+              <thead className="border-b-2 border-primary/20">
                 {section.data && section.data.length > 0 && (
                   <tr>
                     {Object.values(section.data[0]).map((cell, index) => (
                       <th
                         key={index}
-                        className="font-medium"
+                        className="py-4 px-6 text-left font-semibold bg-muted/50 first:rounded-tl-lg last:rounded-tr-lg"
                       >
                         {cell as string}
                       </th>
@@ -74,12 +75,20 @@ export function PostContent({ content }: PostContentProps) {
                   </tr>
                 )}
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-border">
                 {section.data &&
                   section.data.slice(1).map((row, index) => (
-                    <tr key={index}>
+                    <tr
+                      key={index}
+                      className="hover:bg-muted/50 transition-colors"
+                    >
                       {Object.values(row).map((cell, cellIndex) => (
-                        <td key={cellIndex}>{cell as string}</td>
+                        <td
+                          key={cellIndex}
+                          className="py-4 px-6 text-muted-foreground"
+                        >
+                          {cell as string}
+                        </td>
                       ))}
                     </tr>
                   ))}
@@ -100,6 +109,19 @@ export function PostContent({ content }: PostContentProps) {
               </li>
             ))}
           </ul>
+        );
+
+      case 'ad':
+        return (
+          <div className="my-12 -mx-4 sm:mx-0">
+            <div className="bg-muted rounded-lg p-4">
+              <div className="aspect-[16/5] relative flex items-center justify-center bg-muted-foreground/5 rounded-md overflow-hidden">
+                <span className="text-muted-foreground text-sm">
+                  Anúncio (728x90)
+                </span>
+              </div>
+            </div>
+          </div>
         );
 
       default:

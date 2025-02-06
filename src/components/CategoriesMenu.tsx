@@ -180,7 +180,9 @@ export function CategoriesMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent">
+            Categories
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="grid grid-cols-[200px_1fr] w-[450px] gap-0 p-4">
               {/* Lista de Categorias */}

@@ -54,7 +54,7 @@ export default function HomePage() {
       {/* Top Banner Ad - Full Width */}
       <div className="w-full bg-muted/30 py-4">
         <div className="container mx-auto px-4">
-          <AdBanner position="top" />
+          <AdBanner adSlot="1234567890" />
         </div>
       </div>
 
@@ -88,7 +88,7 @@ export default function HomePage() {
         {/* Mid-Page Banner Ad - Full Width Background */}
         <div className="relative -mx-4 bg-muted/30 py-4">
           <div className="container mx-auto">
-            <AdBanner position="middle" />
+            <AdBanner adSlot="1234567890" />
           </div>
         </div>
 
@@ -120,12 +120,12 @@ export default function HomePage() {
             <div className="hidden lg:block lg:col-span-3">
               <div className="sticky top-[140px] space-y-6">
                 <AdBanner
+                  adSlot="1234567890"
                   className="h-[600px]"
-                  position="sidebar-top"
                 />
                 <AdBanner
+                  adSlot="1234567890"
                   className="h-[250px]"
-                  position="sidebar-bottom"
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function HomePage() {
         {/* Bottom Banner Ad - Full Width Background */}
         <div className="relative -mx-4 bg-muted/30 py-4 mt-12">
           <div className="container mx-auto">
-            <AdBanner position="bottom" />
+            <AdBanner adSlot="1234567890" />
           </div>
         </div>
       </div>

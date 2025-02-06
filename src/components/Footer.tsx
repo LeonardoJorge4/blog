@@ -2,19 +2,16 @@ import Link from 'next/link';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const categories = [
-  { name: 'Tecnologia', href: '/tecnologia' },
-  { name: 'Beleza', href: '/beleza' },
-  { name: 'Moda', href: '/moda' },
-  { name: 'Casa', href: '/casa' },
+  { name: 'Tech', href: '/tech' },
+  { name: 'Beauty', href: '/beauty' },
+  { name: 'Fashion', href: '/fashion' },
+  { name: 'Home', href: '/home' },
   { name: 'Fitness', href: '/fitness' },
-  { name: 'Games', href: '/games' },
 ];
 
 const company = [
-  { name: 'Sobre', href: '/sobre' },
-  { name: 'Política de Privacidade', href: '/privacidade' },
-  { name: 'Termos de Uso', href: '/termos' },
-  { name: 'Contato', href: '/contato' },
+  { name: 'Privacy Policy', href: '/privacy' },
+  { name: 'Terms of Use', href: '/terms' },
 ];
 
 export function Footer() {
@@ -22,19 +19,23 @@ export function Footer() {
     <footer className="bg-card border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo e Descrição */}
+          {/* Logo and Description */}
           <div className="space-y-4">
-            <Link href="/" className="text-2xl font-bold text-primary">
+            <Link
+              href="/"
+              className="text-2xl font-bold text-primary"
+            >
               BestFinder
             </Link>
             <p className="text-sm text-muted-foreground">
-              Sua fonte confiável de recomendações de produtos, reviews e comparações.
+              Your trusted source for product recommendations, reviews and
+              comparisons.
             </p>
           </div>
 
-          {/* Categorias */}
+          {/* Categories */}
           <div>
-            <h3 className="font-semibold mb-4">Categorias</h3>
+            <h3 className="font-semibold mb-4">Categories</h3>
             <ul className="space-y-2">
               {categories.map((category) => (
                 <li key={category.name}>
@@ -49,9 +50,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Empresa */}
+          {/* Company */}
           <div>
-            <h3 className="font-semibold mb-4">Empresa</h3>
+            <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               {company.map((item) => (
                 <li key={item.name}>
@@ -70,32 +71,32 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Newsletter</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Receba as melhores ofertas e novidades em primeira mão.
+              Get the best deals and news first.
             </p>
             <form className="space-y-2">
               <input
                 type="email"
-                placeholder="Seu e-mail"
+                placeholder="Your email"
                 className="w-full px-4 py-2 text-sm rounded-md bg-muted border focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <button
                 type="submit"
                 className="w-full px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >
-                Inscrever-se
+                Subscribe
               </button>
             </form>
           </div>
         </div>
 
-        {/* Rodapé Inferior */}
+        {/* Bottom Footer */}
         <div className="mt-12 pt-8 border-t">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © 2024 BestFinder. Todos os direitos reservados.
+              © 2024 BestFinder. All rights reserved.
             </p>
 
-            {/* Redes Sociais */}
+            {/* Social Media */}
             <div className="flex space-x-4">
               <a
                 href="#"
@@ -121,10 +122,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Banner de Anúncio */}
+          {/* Ad Banner */}
           <div className="mt-8">
             <div className="w-full h-[90px] bg-muted rounded-lg flex items-center justify-center text-muted-foreground">
-              Espaço para Anúncio (728x90)
+              Ad Space (728x90)
             </div>
           </div>
         </div>

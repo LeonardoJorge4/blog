@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { PostAuthor } from '@/components/PostAuthor';
 import { PostContent } from '@/components/PostContent';
 import { RelatedPosts } from '@/components/RelatedPosts';
+import Image from 'next/image';
 
 // Dados mockados para exemplo
 const post = {
@@ -17,7 +18,7 @@ const post = {
     {
       type: 'paragraph',
       content:
-        'O mercado de smartphones está cada vez mais competitivo, com fabricantes lançando dispositivos impressionantes a cada ano. Neste artigo, vamos analisar os 10 melhores smartphones disponíveis em 2024.',
+        'O mercado de smartphones está cada vez mais competitivo, com fabricantes lançando dispositivos impressionantes a cada ano. Neste artigo, vamos analisar os 10 melhores smartphones disponíveis em 2024, considerando diversos fatores como desempenho, câmera, bateria e custo-benefício.',
     },
     {
       type: 'heading',
@@ -29,7 +30,7 @@ const post = {
       src: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9',
       alt: 'iPhone 15 Pro Max',
       caption:
-        'O novo iPhone 15 Pro Max traz melhorias significativas na câmera',
+        'O novo iPhone 15 Pro Max traz melhorias significativas na câmera e design em titânio',
     },
     {
       type: 'paragraph',
@@ -39,32 +40,114 @@ const post = {
     {
       type: 'heading',
       level: 2,
-      content: 'Especificações',
+      content: 'Especificações Técnicas',
     },
     {
       type: 'table',
       data: [
-        { caracteristica: 'Característica', detalhe: 'Detalhe' },
-        { caracteristica: 'Tela', detalhe: '6.7" OLED' },
+        { caracteristica: 'Especificação', detalhe: 'Descrição' },
+        { caracteristica: 'Tela', detalhe: '6.7" Super Retina XDR OLED' },
         { caracteristica: 'Processador', detalhe: 'A17 Pro' },
-        { caracteristica: 'Câmera', detalhe: '48MP' },
+        { caracteristica: 'RAM', detalhe: '8GB' },
+        { caracteristica: 'Armazenamento', detalhe: '256GB/512GB/1TB' },
+        { caracteristica: 'Câmera Principal', detalhe: '48MP + 12MP + 12MP' },
+        { caracteristica: 'Bateria', detalhe: '4.422 mAh' },
       ],
     },
     {
       type: 'heading',
       level: 2,
-      content: 'Principais Recursos',
+      content: 'Destaques',
     },
     {
       type: 'list',
       items: [
-        'Modo Ação para vídeos super estáveis',
-        'Fotografia em ProRAW',
-        'Bateria com duração de até 29 horas',
-        'Design em titânio',
+        'Design premium em titânio',
+        'Câmera principal de 48MP com zoom óptico de 5x',
+        'Chip A17 Pro com desempenho excepcional',
+        'Tela ProMotion de 120Hz',
+        'Suporte a USB-C',
       ],
     },
-    // ... mais seções
+    {
+      type: 'ad',
+      format: 'in-article',
+    },
+    {
+      type: 'heading',
+      level: 1,
+      content: '2. Samsung Galaxy S24 Ultra',
+    },
+    {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf',
+      alt: 'Samsung Galaxy S24 Ultra',
+      caption:
+        'O Galaxy S24 Ultra traz recursos avançados de IA e S Pen integrada',
+    },
+    {
+      type: 'paragraph',
+      content:
+        'O Samsung Galaxy S24 Ultra é a definição de inovação Android. Com seu processador Snapdragon 8 Gen 3, recursos de IA generativa e câmera versátil, ele oferece uma experiência completa para usuários exigentes.',
+    },
+    {
+      type: 'table',
+      data: [
+        { caracteristica: 'Especificação', detalhe: 'Descrição' },
+        { caracteristica: 'Tela', detalhe: '6.8" Dynamic AMOLED 2X' },
+        { caracteristica: 'Processador', detalhe: 'Snapdragon 8 Gen 3' },
+        { caracteristica: 'RAM', detalhe: '12GB' },
+        { caracteristica: 'Armazenamento', detalhe: '256GB/512GB/1TB' },
+        {
+          caracteristica: 'Câmera Principal',
+          detalhe: '200MP + 50MP + 12MP + 10MP',
+        },
+        { caracteristica: 'Bateria', detalhe: '5.000 mAh' },
+      ],
+    },
+    {
+      type: 'heading',
+      level: 2,
+      content: 'Recursos Exclusivos',
+    },
+    {
+      type: 'list',
+      items: [
+        'S Pen integrada com baixa latência',
+        'Galaxy AI com tradução em tempo real',
+        'Zoom espacial de até 100x',
+        'Tela com brilho de até 2.600 nits',
+        'Proteção Gorilla Glass Armor',
+      ],
+    },
+    {
+      type: 'heading',
+      level: 2,
+      content: 'Comparativo de Câmeras',
+    },
+    {
+      type: 'table',
+      data: [
+        {
+          caracteristica: 'Recurso',
+          iphone: 'iPhone 15 Pro Max',
+          samsung: 'Galaxy S24 Ultra',
+        },
+        {
+          caracteristica: 'Câmera Principal',
+          iphone: '48MP',
+          samsung: '200MP',
+        },
+        { caracteristica: 'Ultra Wide', iphone: '12MP', samsung: '12MP' },
+        { caracteristica: 'Zoom Óptico', iphone: '5x', samsung: '10x' },
+        { caracteristica: 'Zoom Digital', iphone: '25x', samsung: '100x' },
+      ],
+    },
+    {
+      type: 'paragraph',
+      content:
+        'Ambos os dispositivos representam o que há de melhor em suas respectivas plataformas. A escolha entre eles dependerá principalmente do ecossistema de sua preferência e necessidades específicas de uso.',
+    },
   ],
   author: {
     name: 'João Silva',
@@ -133,10 +216,12 @@ export default function PostPage() {
 
             {/* Imagem Principal */}
             <div className="relative aspect-[16/9] mb-8">
-              <img
+              <Image
                 src={post.coverImage}
                 alt={post.title}
-                className="rounded-lg object-cover w-full h-full"
+                fill
+                className="rounded-lg object-cover"
+                priority
               />
             </div>
 
