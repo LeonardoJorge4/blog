@@ -5,16 +5,21 @@ import { Search, Heart, Menu } from 'lucide-react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { useState } from 'react';
 import { CategoriesMenu } from './CategoriesMenu';
+import { useLocale } from '@/contexts/LocaleContext';
+import { getTranslation } from '@/locales';
 
-const navigation = [
-  { name: 'Tech', href: '/tech' },
-  { name: 'Beauty', href: '/beauty' },
-  { name: 'House', href: '/house' },
-];
+
 
 export function Header() {
+  const { locale } = useLocale();
+  const t = (path: string) => getTranslation(locale, path);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navigation = [
+    { name: t('navigation.tech'), href: '/tech' },
+    { name: t('navigation.beauty'), href: '/beauty' },
+    { name: t('navigation.house'), href: '/house' },
+  ];
   function handleToggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }

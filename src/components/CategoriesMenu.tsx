@@ -10,6 +10,8 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
+import { useLocale } from '@/contexts/LocaleContext';
+import { getTranslation } from '@/locales';
 
 const categories = [
   {
@@ -176,12 +178,15 @@ const categories = [
 ];
 
 export function CategoriesMenu() {
+  const { locale } = useLocale();
+  const t = (path: string) => getTranslation(locale, path);
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-transparent">
-            Categories
+            {t('navigation.categories')}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="grid grid-cols-[200px_1fr] w-[450px] gap-0 p-4">

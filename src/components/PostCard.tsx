@@ -1,8 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, MessageCircle, Eye } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { useLocale } from '@/contexts/LocaleContext';
+import { getTranslation } from '@/locales';
 
 interface PostCardProps {
   slug: string;
@@ -27,6 +31,9 @@ export function PostCard({
   views,
   comments,
 }: PostCardProps) {
+  const { locale } = useLocale();
+  const t = (path: string) => getTranslation(locale, path);
+
   if (layout === 'list') {
     return (
       <div className="flex gap-6 p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors">
@@ -45,15 +52,15 @@ export function PostCard({
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1">
             <Clock className="h-4 w-4" />
-            {readTime} min
+            {readTime} {t('common.readTime')}
           </span>
           <span className="flex items-center gap-1">
             <Eye className="h-4 w-4" />
-            {views}
+            {views} {t('common.views')}
           </span>
           <span className="flex items-center gap-1">
             <MessageCircle className="h-4 w-4" />
-            {comments}
+            {comments} {t('common.comments')}
           </span>
         </div>
       </div>
@@ -81,15 +88,15 @@ export function PostCard({
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1">
               <Clock className="h-4 w-4" />
-              {readTime} min
+              {readTime} {t('common.readTime')}
             </span>
             <span className="flex items-center gap-1">
               <Eye className="h-4 w-4" />
-              {views}
+              {views} {t('common.views')}
             </span>
             <span className="flex items-center gap-1">
               <MessageCircle className="h-4 w-4" />
-              {comments}
+              {comments} {t('common.comments')}
             </span>
           </div>
         </CardFooter>

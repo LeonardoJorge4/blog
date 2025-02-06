@@ -7,6 +7,8 @@ import { Grid, List } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import { useLocale } from '@/contexts/LocaleContext';
+import { getTranslation } from '@/locales';
 
 // Mock data - Replace with actual data
 const categoryData = {
@@ -215,6 +217,7 @@ const categoryData = {
 };
 
 export default function CategoryPage() {
+  const { locale, country } = useLocale();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [categoryContent, setCategoryContent] = useState<any>(null);
   const params = useParams();
@@ -222,10 +225,17 @@ export default function CategoryPage() {
   useEffect(() => {
     if (params?.category) {
       const categorySlug = params.category as string;
-      const content = categoryData[categorySlug as keyof typeof categoryData];
+      const content = {
+        ...categoryData[categorySlug as keyof typeof categoryData],
+        title: getTranslation(locale, `categories.${categorySlug}.title`),
+        description: getTranslation(
+          locale,
+          `categories.${categorySlug}.description`
+        ),
+      };
       setCategoryContent(content);
     }
-  }, [params?.category]);
+  }, [params?.category, locale]);
 
   if (!categoryContent) {
     return <div>Loading...</div>;
